@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="27X-rr-gtt">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Search View Controller-->
+        <scene sceneID="7TH-5V-YD5">
+            <objects>
+                <viewController id="27X-rr-gtt" customClass="SearchViewController" customModule="MovieBrowser" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ua7-fQ-ZoM">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="8dd-Gp-1hv">
+                                <rect key="frame" x="0.0" y="44" width="422" height="51"/>
+                                <subviews>
+                                    <searchBar contentMode="redraw" placeholder="Search movie" translatesAutoresizingMaskIntoConstraints="NO" id="JiB-XJ-P5F">
+                                        <rect key="frame" x="0.0" y="0.0" width="362" height="51"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                        <scopeButtonTitles>
+                                            <string>Title</string>
+                                            <string>Title</string>
+                                        </scopeButtonTitles>
+                                    </searchBar>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="peQ-do-Tld">
+                                        <rect key="frame" x="372" y="0.0" width="50" height="51"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="Go"/>
+                                        <connections>
+                                            <action selector="goPressed:" destination="27X-rr-gtt" eventType="touchUpInside" id="VWQ-Kf-k25"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="peQ-do-Tld" firstAttribute="centerY" secondItem="8dd-Gp-1hv" secondAttribute="centerY" id="0aT-bN-04H"/>
+                                    <constraint firstItem="JiB-XJ-P5F" firstAttribute="leading" secondItem="8dd-Gp-1hv" secondAttribute="leading" id="DDz-bc-Bff"/>
+                                    <constraint firstItem="JiB-XJ-P5F" firstAttribute="centerY" secondItem="8dd-Gp-1hv" secondAttribute="centerY" id="lFT-9R-Q6f"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="Sbn-7z-GfM"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="8dd-Gp-1hv" firstAttribute="top" secondItem="Sbn-7z-GfM" secondAttribute="top" id="Eu4-jc-eut"/>
+                            <constraint firstItem="8dd-Gp-1hv" firstAttribute="leading" secondItem="Sbn-7z-GfM" secondAttribute="leading" id="mjp-3w-eUR"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="8dd-Gp-1hv" secondAttribute="trailing" constant="-28" id="vMC-kg-CHH"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="searchBar" destination="JiB-XJ-P5F" id="9Ee-qx-WCU"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="JYC-Q4-UFq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="137.68115942028987" y="137.94642857142856"/>
+        </scene>
+    </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
