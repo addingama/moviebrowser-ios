@@ -16,13 +16,39 @@ protocol MovieManagerDelegate {
 struct MovieManager {
     var delegate: MovieManagerDelegate?
     let baseUrl = "https://api.themoviedb.org/3/search/movie?api_key=5885c445eab51c7004916b9c0313e2d3"
+    var selectedMovie: Movie?
     var movies: [Movie] = []
     var currentPage: Int = 1
     var totalPage: Int = 1
     var totalResult: Int = 0
     
+    var isLastPage: Bool {
+        return totalPage == currentPage
+    }
+    
+    mutating func setData(page: Int, data: [Movie], totalPage: Int) {
+        self.currentPage = page
+        self.totalPage = totalPage
+        
+        if (page == 1) {
+            self.movies = data
+        } else {
+            self.movies.append(contentsOf: data)
+        }
+    }
+    
+    mutating func setSelectedMovie(movie: Movie?) {
+        self.selectedMovie = movie
+    }
+    
+    mutating func nextPage() {
+        self.currentPage = self.currentPage + 1
+    }
+    
+    
+    
     func searchMovies(query: String) {
-        let urlString = "\(baseUrl)&page=\(currentPage)&query=\(query)"
+        let urlString = "\(baseUrl)&page=\(currentPage)&query=\(query.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!)"
         print(urlString)
         performSearch(with: urlString)
     }

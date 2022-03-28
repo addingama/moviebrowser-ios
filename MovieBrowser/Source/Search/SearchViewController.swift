@@ -10,13 +10,21 @@ import UIKit
 
 class SearchViewController: UIViewController {
     
+    @IBOutlet weak var moviesTable: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!
+    
     var movieManager = MovieManager()
+    var prevKeyword = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.navigationController?.navigationBar.topItem?.title = "Movie Search"
+
         searchBar.delegate = self
         movieManager.delegate = self
+        moviesTable.delegate = self
+        moviesTable.dataSource = self
     }
     
     @IBAction func goPressed(_ sender: UIButton) {
@@ -25,11 +33,94 @@ class SearchViewController: UIViewController {
     
     func triggerSearch () {
         if let query = searchBar.text {
-            print(query)
+            if query != prevKeyword {
+                movieManager.setData(page: 1, data: [], totalPage: 1)
+            }
             movieManager.searchMovies(query: query)
         }
     }
     
+}
+
+//MARK: - UISearchBarDelegate
+
+extension SearchViewController: UISearchBarDelegate {
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        DispatchQueue.main.async {
+            self.movieManager.setData(page: 1, data: [], totalPage: 1)
+            self.moviesTable.reloadData()
+            print(self.movieManager.movies)
+        }
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        triggerSearch()
+    }
+}
+
+//MARK: - MovieManagerDelegate
+extension SearchViewController: MovieManagerDelegate {
+    func didFinishSearch(_ movieManager: MovieManager, searchResult: SearchMovieResponse) {
+        DispatchQueue.main.async {
+            print("search finished, page \(searchResult.page) of \(searchResult.total_pages) with \(searchResult.total_results) movies")
+            self.movieManager.setData(page: searchResult.page, data: searchResult.results, totalPage: searchResult.total_pages)
+            self.moviesTable.reloadData()
+            self.prevKeyword = self.searchBar.text!
+        }
+        
+    }
+    
+    func didFinishSearchWithError(error: Error) {
+        DispatchQueue.main.async {
+            print(error)
+            self.showToast(message: error.localizedDescription)
+        }
+    }
+}
+
+//MARK: - UITableViewDelegate
+extension SearchViewController: UITableViewDelegate {
+//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+//        return 83
+//    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.movieManager.setSelectedMovie(movie: self.movieManager.movies[indexPath.row])
+    }
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        if indexPath.row == self.movieManager.movies.count - 1 && !self.movieManager.isLastPage {
+            self.movieManager.nextPage()
+            self.triggerSearch()
+        }
+    }
+}
+
+//MARK: - UITableViewDataSource
+extension SearchViewController: UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        let size = movieManager.movies.count
+        return size
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let movieCell = tableView.dequeueReusableCell(withIdentifier: "MovieCell", for: indexPath) as? MovieTableViewCell else {
+            return UITableViewCell()
+        }
+        let movie: Movie = self.movieManager.movies[indexPath.row]
+        
+        movieCell.configure(with: movie)
+        
+        
+        return movieCell
+    }
+}
+
+
+//MARK: - UIViewController
+extension UIViewController {
     func showToast(message: String) {
         let toastWidth = self.view.frame.size.width - 20
         let toastHeight = 50
@@ -50,31 +141,4 @@ class SearchViewController: UIViewController {
                 toastLabel.removeFromSuperview()
             })
     }
-    
 }
-
-//MARK: - UISearchBarDelegate
-
-extension SearchViewController: UISearchBarDelegate {
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        
-    }
-    
-    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        triggerSearch()
-    }
-}
-
-//MARK: - MovieManagerDelegate
-extension SearchViewController: MovieManagerDelegate {
-    func didFinishSearch(_ movieManager: MovieManager, searchResult: SearchMovieResponse) {
-        print("search finished, page \(searchResult.page) of \(searchResult.total_pages) with \(searchResult.total_results) movies")
-    }
-    
-    func didFinishSearchWithError(error: Error) {
-        DispatchQueue.main.async {
-            self.showToast(message: error.localizedDescription)
-        }
-    }
-}
-
