@@ -139,7 +139,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xko-lY-iVV">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Xko-lY-iVV">
                                 <rect key="frame" x="0.0" y="88" width="414" height="774"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Release Date" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GR5-p6-Jrg">
@@ -151,14 +151,14 @@
                                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Movie Title" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ENZ-rL-hao">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Movie Title" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ENZ-rL-hao">
                                         <rect key="frame" x="24" y="24" width="366" height="38.5"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="32"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="TopLeft" verticalHuggingPriority="251" text="Overview label" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z8p-vD-P4w">
-                                        <rect key="frame" x="202" y="131" width="188" height="20.5"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="top" verticalHuggingPriority="251" text="Overview label" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z8p-vD-P4w">
+                                        <rect key="frame" x="202" y="131" width="204" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -172,17 +172,18 @@
                                     </imageView>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="TYi-IC-bIl" firstAttribute="trailing" secondItem="ENZ-rL-hao" secondAttribute="trailing" constant="24" id="7lj-h9-83P"/>
+                                    <constraint firstItem="TYi-IC-bIl" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="ENZ-rL-hao" secondAttribute="trailing" id="7lj-h9-83P"/>
                                     <constraint firstItem="iDf-Nw-nSt" firstAttribute="leading" secondItem="eCx-Dc-rhm" secondAttribute="leading" constant="24" id="Hnb-NI-5Tt"/>
                                     <constraint firstItem="iDf-Nw-nSt" firstAttribute="top" secondItem="GR5-p6-Jrg" secondAttribute="bottom" constant="24" id="JOe-CS-SMN"/>
-                                    <constraint firstItem="Z8p-vD-P4w" firstAttribute="leading" secondItem="iDf-Nw-nSt" secondAttribute="trailing" constant="8" id="Lzb-1L-9p1"/>
-                                    <constraint firstAttribute="trailing" secondItem="Z8p-vD-P4w" secondAttribute="trailing" constant="24" id="NeH-Av-7Tu"/>
-                                    <constraint firstItem="Z8p-vD-P4w" firstAttribute="top" secondItem="GR5-p6-Jrg" secondAttribute="bottom" constant="24" id="VbZ-Pl-mX8"/>
+                                    <constraint firstItem="eCx-Dc-rhm" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="Z8p-vD-P4w" secondAttribute="bottom" id="VYn-gW-6W6"/>
+                                    <constraint firstItem="eCx-Dc-rhm" firstAttribute="trailing" secondItem="Z8p-vD-P4w" secondAttribute="trailing" constant="8" id="ZOW-xg-3iU"/>
                                     <constraint firstItem="GR5-p6-Jrg" firstAttribute="centerX" secondItem="Xko-lY-iVV" secondAttribute="centerX" id="bq4-Qb-TB8"/>
                                     <constraint firstItem="ENZ-rL-hao" firstAttribute="centerX" secondItem="Xko-lY-iVV" secondAttribute="centerX" id="cVO-nz-ck9"/>
                                     <constraint firstItem="ENZ-rL-hao" firstAttribute="leading" secondItem="eCx-Dc-rhm" secondAttribute="leading" constant="24" id="eq9-qB-gfX"/>
+                                    <constraint firstItem="Z8p-vD-P4w" firstAttribute="leading" secondItem="iDf-Nw-nSt" secondAttribute="trailing" constant="8" symbolic="YES" id="iPZ-45-RHs"/>
+                                    <constraint firstItem="Z8p-vD-P4w" firstAttribute="top" secondItem="iDf-Nw-nSt" secondAttribute="top" id="nYV-7t-cQE"/>
                                     <constraint firstItem="GR5-p6-Jrg" firstAttribute="top" secondItem="ENZ-rL-hao" secondAttribute="bottom" constant="24" id="v7m-wx-D1g"/>
-                                    <constraint firstAttribute="bottom" secondItem="Z8p-vD-P4w" secondAttribute="bottom" constant="656.5" id="x3z-6k-9EZ"/>
+                                    <constraint firstAttribute="trailing" secondItem="Z8p-vD-P4w" secondAttribute="trailing" constant="32" id="w5M-NU-xUW"/>
                                     <constraint firstItem="ENZ-rL-hao" firstAttribute="top" secondItem="eCx-Dc-rhm" secondAttribute="top" constant="24" id="yIg-tI-9tM"/>
                                 </constraints>
                                 <viewLayoutGuide key="contentLayoutGuide" id="TYi-IC-bIl"/>

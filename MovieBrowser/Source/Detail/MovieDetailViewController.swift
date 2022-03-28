@@ -16,6 +16,10 @@ class MovieDetailViewController: UIViewController {
     
     var movieManager = MovieManager.sharedInstance
     
+    override func viewWillLayoutSubviews() {
+        descriptionLabel.sizeToFit()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         titleLabel.text = movieManager.selectedMovie?.title
