@@ -148,7 +148,7 @@
                                             <constraint firstAttribute="height" constant="20.5" id="BXh-HN-N31"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" red="0.2274509804" green="0.21960784310000001" blue="0.27058823529999998" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Movie Title" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ENZ-rL-hao">
@@ -158,18 +158,16 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="TopLeft" verticalHuggingPriority="251" text="Overview label" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z8p-vD-P4w">
-                                        <rect key="frame" x="211" y="131" width="179" height="20.5"/>
+                                        <rect key="frame" x="202" y="131" width="188" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="iDf-Nw-nSt">
-                                        <rect key="frame" x="24" y="131" width="150" height="150"/>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="iDf-Nw-nSt">
+                                        <rect key="frame" x="24" y="131" width="170" height="250"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="150" id="1kS-ZP-n6u"/>
-                                            <constraint firstAttribute="height" constant="150" id="7J1-UU-Aaf"/>
-                                            <constraint firstAttribute="width" constant="150" id="b1m-9q-0Am"/>
-                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="150" id="lPB-jE-Iue"/>
+                                            <constraint firstAttribute="height" constant="250" id="1kS-ZP-n6u"/>
+                                            <constraint firstAttribute="width" constant="170" id="b1m-9q-0Am"/>
                                         </constraints>
                                     </imageView>
                                 </subviews>
@@ -177,7 +175,7 @@
                                     <constraint firstItem="TYi-IC-bIl" firstAttribute="trailing" secondItem="ENZ-rL-hao" secondAttribute="trailing" constant="24" id="7lj-h9-83P"/>
                                     <constraint firstItem="iDf-Nw-nSt" firstAttribute="leading" secondItem="eCx-Dc-rhm" secondAttribute="leading" constant="24" id="Hnb-NI-5Tt"/>
                                     <constraint firstItem="iDf-Nw-nSt" firstAttribute="top" secondItem="GR5-p6-Jrg" secondAttribute="bottom" constant="24" id="JOe-CS-SMN"/>
-                                    <constraint firstItem="Z8p-vD-P4w" firstAttribute="leading" secondItem="iDf-Nw-nSt" secondAttribute="trailing" constant="37" id="Lzb-1L-9p1"/>
+                                    <constraint firstItem="Z8p-vD-P4w" firstAttribute="leading" secondItem="iDf-Nw-nSt" secondAttribute="trailing" constant="8" id="Lzb-1L-9p1"/>
                                     <constraint firstAttribute="trailing" secondItem="Z8p-vD-P4w" secondAttribute="trailing" constant="24" id="NeH-Av-7Tu"/>
                                     <constraint firstItem="Z8p-vD-P4w" firstAttribute="top" secondItem="GR5-p6-Jrg" secondAttribute="bottom" constant="24" id="VbZ-Pl-mX8"/>
                                     <constraint firstItem="GR5-p6-Jrg" firstAttribute="centerX" secondItem="Xko-lY-iVV" secondAttribute="centerX" id="bq4-Qb-TB8"/>
