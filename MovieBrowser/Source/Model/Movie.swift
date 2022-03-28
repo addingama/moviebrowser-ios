@@ -7,12 +7,12 @@ class Movie: Codable {
     var poster_path: String? = ""
     var overview: String = ""
     
-    func getReleaseDate() -> String {
+    func getReleaseDate(format: String = "MMMM dd, yyyy") -> String {
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy-MM-dd"
         
         if let date = formatter.date(from: self.release_date) {
-            formatter.dateFormat = "MMM dd, yyyy"
+            formatter.dateFormat = format
             return formatter.string(from: date)
         }
         

@@ -13,7 +13,10 @@ protocol MovieManagerDelegate {
     func didFinishSearchWithError(error: Error)
 }
 
-struct MovieManager {
+class MovieManager {
+    static let sharedInstance = MovieManager()
+    
+    private init() {}
     var delegate: MovieManagerDelegate?
     let baseUrl = "https://api.themoviedb.org/3/search/movie?api_key=5885c445eab51c7004916b9c0313e2d3"
     var selectedMovie: Movie?
@@ -26,7 +29,7 @@ struct MovieManager {
         return totalPage == currentPage
     }
     
-    mutating func setData(page: Int, data: [Movie], totalPage: Int) {
+    func setData(page: Int, data: [Movie], totalPage: Int) {
         self.currentPage = page
         self.totalPage = totalPage
         
@@ -37,11 +40,11 @@ struct MovieManager {
         }
     }
     
-    mutating func setSelectedMovie(movie: Movie?) {
+    func setSelectedMovie(movie: Movie?) {
         self.selectedMovie = movie
     }
     
-    mutating func nextPage() {
+    func nextPage() {
         self.currentPage = self.currentPage + 1
     }
     

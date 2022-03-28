@@ -13,7 +13,7 @@ class SearchViewController: UIViewController {
     @IBOutlet weak var moviesTable: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!
     
-    var movieManager = MovieManager()
+    var movieManager = MovieManager.sharedInstance
     var prevKeyword = ""
     
     override func viewDidLoad() {
@@ -39,7 +39,6 @@ class SearchViewController: UIViewController {
             movieManager.searchMovies(query: query)
         }
     }
-    
 }
 
 //MARK: - UISearchBarDelegate
