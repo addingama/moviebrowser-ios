@@ -89,18 +89,27 @@
                                                     <color key="textColor" red="0.2274509804" green="0.21960784310000001" blue="0.27058823529999998" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iqA-Gx-LBg">
+                                                    <rect key="frame" x="335.5" y="31.5" width="41.5" height="20.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstAttribute="trailingMargin" secondItem="cdN-bS-jnn" secondAttribute="trailing" id="1Yy-5d-Gdr"/>
                                                 <constraint firstItem="gMh-qN-bFR" firstAttribute="leading" secondItem="VjF-J6-cWK" secondAttribute="leadingMargin" id="Dmg-jA-P5W"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="cdN-bS-jnn" secondAttribute="bottom" id="b3N-AA-eRk"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="iqA-Gx-LBg" secondAttribute="trailing" constant="0.5" id="mmO-SV-o4c"/>
                                                 <constraint firstItem="gMh-qN-bFR" firstAttribute="top" secondItem="VjF-J6-cWK" secondAttribute="topMargin" id="qLK-ql-0xB"/>
                                                 <constraint firstItem="cdN-bS-jnn" firstAttribute="leading" secondItem="VjF-J6-cWK" secondAttribute="leadingMargin" id="qf5-ld-kFw"/>
+                                                <constraint firstItem="iqA-Gx-LBg" firstAttribute="centerY" secondItem="VjF-J6-cWK" secondAttribute="centerY" id="r5L-rx-bRi"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="gMh-qN-bFR" secondAttribute="trailing" id="wfB-n7-ufP"/>
                                                 <constraint firstItem="cdN-bS-jnn" firstAttribute="top" secondItem="gMh-qN-bFR" secondAttribute="bottom" constant="12" id="znM-A0-PPv"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="rating" destination="iqA-Gx-LBg" id="6UL-6O-RSg"/>
                                             <outlet property="releaseDate" destination="cdN-bS-jnn" id="BXU-aB-MFw"/>
                                             <outlet property="title" destination="gMh-qN-bFR" id="If3-yb-q9w"/>
                                             <segue destination="YuP-Ma-vcA" kind="show" identifier="segueOpenDetail" id="cgn-ew-cuH"/>

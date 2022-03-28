@@ -23,7 +23,8 @@ class MovieDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         titleLabel.text = movieManager.selectedMovie?.title
-        releaseLabel.text = movieManager.selectedMovie?.getReleaseDate()
+        let formattedDate = movieManager.selectedMovie?.getReleaseDate(format: "d/MM/yyyy")
+        releaseLabel.text = "Release Date: \(formattedDate ?? "-")"
         descriptionLabel.text = movieManager.selectedMovie?.overview
         posterImage.loadFrom(URLAddress: "https://image.tmdb.org/t/p/w500\(movieManager.selectedMovie?.poster_path ?? "")")
         

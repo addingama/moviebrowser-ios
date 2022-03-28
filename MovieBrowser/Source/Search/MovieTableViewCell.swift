@@ -12,6 +12,7 @@ class MovieTableViewCell: UITableViewCell {
 
     @IBOutlet weak var title: UILabel!
     @IBOutlet weak var releaseDate: UILabel!
+    @IBOutlet weak var rating: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -21,6 +22,7 @@ class MovieTableViewCell: UITableViewCell {
     func configure(with movie: Movie) {
         title.text = movie.title
         releaseDate.text = movie.getReleaseDate()
+        rating.text = "\(movie.vote_average!)"
     }
 
 }

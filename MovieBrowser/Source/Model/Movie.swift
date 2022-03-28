@@ -6,6 +6,7 @@ class Movie: Codable {
     var release_date: String = ""
     var poster_path: String? = ""
     var overview: String = ""
+    var vote_average: Double? = 0.0
     
     func getReleaseDate(format: String = "MMMM dd, yyyy") -> String {
         let formatter = DateFormatter()
