@@ -26,7 +26,9 @@ class MovieManager {
     var totalResult: Int = 0
     
     var isLastPage: Bool {
-        return totalPage == currentPage
+        get {
+            return totalPage == currentPage
+        }
     }
     
     func setData(page: Int, data: [Movie], totalPage: Int) {

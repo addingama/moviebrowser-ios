@@ -21,10 +21,3 @@ class Movie: Codable {
         return self.release_date
     }
 }
-
-struct SearchMovieResponse: Codable {
-    var page: Int
-    var total_pages: Int
-    var total_results: Int
-    var results: [Movie]
-}

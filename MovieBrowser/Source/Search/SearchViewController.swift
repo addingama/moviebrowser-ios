@@ -23,8 +23,6 @@ class SearchViewController: UIViewController {
 
         searchBar.delegate = self
         movieManager.delegate = self
-        moviesTable.delegate = self
-        moviesTable.dataSource = self
     }
     
     @IBAction func goPressed(_ sender: UIButton) {
@@ -32,6 +30,7 @@ class SearchViewController: UIViewController {
     }
     
     func triggerSearch () {
+        // TODO: use guard let
         if let query = searchBar.text {
             if query != prevKeyword {
                 movieManager.setData(page: 1, data: [], totalPage: 1)
@@ -46,10 +45,10 @@ class SearchViewController: UIViewController {
 extension SearchViewController: UISearchBarDelegate {
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        // TODO: remove dispatch queue because it's running on main thread
         DispatchQueue.main.async {
             self.movieManager.setData(page: 1, data: [], totalPage: 1)
             self.moviesTable.reloadData()
-            print(self.movieManager.movies)
         }
     }
     
@@ -61,11 +60,11 @@ extension SearchViewController: UISearchBarDelegate {
 //MARK: - MovieManagerDelegate
 extension SearchViewController: MovieManagerDelegate {
     func didFinishSearch(_ movieManager: MovieManager, searchResult: SearchMovieResponse) {
+        self.movieManager.setData(page: searchResult.page, data: searchResult.results, totalPage: searchResult.total_pages)
+        self.prevKeyword = self.searchBar.text!
+        
         DispatchQueue.main.async {
-            print("search finished, page \(searchResult.page) of \(searchResult.total_pages) with \(searchResult.total_results) movies")
-            self.movieManager.setData(page: searchResult.page, data: searchResult.results, totalPage: searchResult.total_pages)
             self.moviesTable.reloadData()
-            self.prevKeyword = self.searchBar.text!
         }
         
     }
@@ -100,8 +99,7 @@ extension SearchViewController: UITableViewDelegate {
 extension SearchViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let size = movieManager.movies.count
-        return size
+        return movieManager.movies.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -120,6 +118,7 @@ extension SearchViewController: UITableViewDataSource {
 
 //MARK: - UIViewController
 extension UIViewController {
+    // Just hide table view and show error info label
     func showToast(message: String) {
         let toastWidth = self.view.frame.size.width - 20
         let toastHeight = 50
